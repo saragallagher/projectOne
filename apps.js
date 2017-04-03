@@ -45,6 +45,8 @@ var bottomRight = $('#bottom-right')
 var topRight = $('#top-right')
 var topLeft = $('#top-left')
 var players = [playerOne, playerTwo]
+var rules = $('#ruels')
+var readRules = $('#read-rules')
 
 $('#reload').on('click',function(){
       document.location.reload(true)
@@ -53,11 +55,17 @@ var currentPlayer = players[Math.round(Math.random())]
 
 function playerTurn(){
   $('#turn').text(currentPlayer.name + " gets to start!")
-  currentPlayer.player.toggleClass('blue')
+
 }
 
+gameBoard.on('click',function(){
+  currentPlayer.player.toggleClass('blue')
+  
+})
+
 function countDown(){
-  timer.text('Time Left :' + count)
+  timer.text('Time Left : ' + count)
+
   if(count <= 0){
     clearInterval(theInterval)
     $('*').off()
@@ -69,7 +77,7 @@ function countDown(){
 $('button').on('click',function(){
   theInterval = setInterval(countDown, 1000)
   whichTurn()
-  gameBoard.on('click', playerTurn)
+  playerTurn()
 
 })
 
@@ -99,7 +107,7 @@ function changeBottomLeftP1(){
      })
   }
   if(topLeft.html(playerOne.topLeft.left3)){
-    bottomLeft.on('click', function(){
+    topLeft.on('click', function(){
       bottomLeft.html(playerTwo.bottomLeft.left5)
     })
   }
@@ -110,6 +118,7 @@ function changeBottomRightP1(){
        bottomRight.html(playerTwo.bottomRight.right2)
      })
   }
+
   if(topRight.html(playerOne.topRight.right3)){
     topRight.on('click', function(){
       bottomRight.html(playerTwo.bottomRight.right5)
@@ -188,3 +197,7 @@ function checkForFive(){
 
   }
 }
+
+readRules.on('click', function(){
+  rules.text('These are the Rules:')
+})
