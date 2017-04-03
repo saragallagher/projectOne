@@ -45,7 +45,7 @@ var bottomRight = $('#bottom-right')
 var topRight = $('#top-right')
 var topLeft = $('#top-left')
 var players = [playerOne, playerTwo]
-var rules = $('#ruels')
+var rules = $('#rules')
 var readRules = $('#read-rules')
 
 $('#reload').on('click',function(){
@@ -60,7 +60,7 @@ function playerTurn(){
 
 gameBoard.on('click',function(){
   currentPlayer.player.toggleClass('blue')
-  
+
 })
 
 function countDown(){
@@ -74,7 +74,7 @@ function countDown(){
   count = count -1
 }
 
-$('button').on('click',function(){
+$('#start').on('click',function(){
   theInterval = setInterval(countDown, 1000)
   whichTurn()
   playerTurn()
