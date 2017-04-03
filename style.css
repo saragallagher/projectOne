@@ -39,12 +39,28 @@ margin:10px;
   float:right;
 }
 .top-player{
-  margin: 15px;
+  float: right;
+  margin: 10px;
+  border: 2px solid black;
+
 }
 .bottom-player{
-  margin:15px;
+
+  margin:10px;
+  border: 2px solid black;
+  display:inline-block;
+  float: right;
 }
 
 img{
+  margin: 0px 45px;
   width: 28%;
 }
+/*#bottom-left{
+  display:inline-block;
+  float:right;
+}
+#bottom-right{
+  display:inline-block;
+  float: right;
+}*/

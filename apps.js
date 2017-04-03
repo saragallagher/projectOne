@@ -36,13 +36,14 @@ var bottomPlayer = $('.bottom-player')
 var gameBoard = $('.game-board')
 var timer = $('#timer')
 var count = 20;
+var bottomLeft = $('#bottom-left')
 
 var currentPlayer = playerOne.name
 
 gameBoard.on('click', playerTurn)
 
 function playerTurn(){
-  console.log('turn')
+  // console.log('turn')
   $('#turn').text("It's " + currentPlayer.name + "'s Turn!")
   switchTurns()
 }
@@ -69,12 +70,14 @@ $('button').on('click',function(){
   theInterval = setInterval(countDown, 1000)
 })
 
-bottomPlayer.on('click', switchHands)
+bottomLeft.on('click', playGame)
 
 function playGame(){
-  bottomPlayer.show()
+  bottomLeft.html(playerTwo.bottomLeft.leftTwo)
+  // bottomLeft.show(increaseBLHands)
+  console.log('left')
 }
 
-function increaseHands(){
-    bottomPlayer.html(playerTwo.bottomLeft.leftTwo + playerTwo.bottomRight.rightOne)
-})
+function increaseBLHands(){
+    bottomLeft.html(playerTwo.bottomLeft.leftTwo)
+}
