@@ -40,21 +40,21 @@ margin:10px;
 }
 .top-player{
   float: right;
-  margin: 10px;
+  margin: 5px;
   border: 2px solid black;
 
 }
 .bottom-player{
 
-  margin:10px;
+  margin:5px;
   border: 2px solid black;
   display:inline-block;
   float: right;
 }
 
 img{
-  margin: 0px 45px;
-  width: 28%;
+  margin: 0px 30px;
+  width: 25%;
 }
 /*#bottom-left{
   display:inline-block;
