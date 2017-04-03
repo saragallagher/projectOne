@@ -51,7 +51,6 @@ $('#reload').on('click',function(){
 })
 var currentPlayer = players[Math.round(Math.random())]
 
-
 function playerTurn(){
   $('#turn').text(currentPlayer.name + " gets to start!")
   currentPlayer.player.toggleClass('blue')
