@@ -38,7 +38,7 @@ var playerOne = {
 var bottomPlayer = $('.bottom-player')
 var gameBoard = $('.game-board')
 var timer = $('#timer')
-var count = 20;
+var count = 10;
 var bottomLeft = $('#bottom-left')
 var bottomRight = $('#bottom-right')
 var topRight = $('#top-right')
@@ -47,7 +47,6 @@ var players = [playerOne, playerTwo]
 
 var currentPlayer = players[Math.round(Math.random())].name
 
-gameBoard.on('click', playerTurn)
 
 function playerTurn(){
   $('#turn').text(currentPlayer + " gets to start!")
@@ -57,17 +56,19 @@ function countDown(){
   timer.text('Time Left :' + count)
   if(count <= 0){
     clearInterval(theInterval)
-    // bottomPlayer.off('click',switchTurns)
-
+    $('*').off()
   }
   count = count -1
 }
 
 $('button').on('click',function(){
   theInterval = setInterval(countDown, 1000)
+  whichTurn()
+  gameBoard.on('click', playerTurn)
+
 })
 
-$('p').on('click', whichTurn)
+// $('p').on('click', whichTurn)
 
 function whichTurn(){
   if(currentPlayer == players[0].name){
@@ -76,7 +77,7 @@ function whichTurn(){
     bottomRight.on('click', changeBottomRightP1)
     topLeft.on('click', changeTopLeftP1)
     topRight.on('click', changeTopRightP1)
-    
+
 
   } else if (currentPlayer == players[1].name){
     console.log('hello')
@@ -86,8 +87,6 @@ function whichTurn(){
     topRight.on('click', changeTopRightP2)
   }
 }
-
-
 
 function changeBottomLeftP1(){
   if(topLeft.html(playerOne.topLeft.left1)){

@@ -56,6 +56,9 @@ img{
   margin: 0px 30px;
   width: 25%;
 }
+p{
+  color: red;
+}
 /*#bottom-left{
   display:inline-block;
   float:right;
