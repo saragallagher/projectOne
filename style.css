@@ -1,0 +1,50 @@
+body{
+
+}
+.container{
+  width: 100%;
+  height: 600px;
+  border: 2px solid black;
+  display: inline-block;
+  margin: auto;
+
+}
+.info-panel{
+  width: 30%;
+  height: 95%;
+  border: 2px solid black;
+  display: inline-block;
+  margin: 10px;
+  float:left;
+
+}
+button{
+  margin: 10px;
+}
+#turn{
+margin:10px;
+}
+#timer{
+margin: 10px;
+}
+#score{
+margin:10px;
+}
+.game-board{
+  width: 60%;
+  height: 95%;
+  border: 2px solid black;
+  display: inline-block;
+  margin: 10px;
+  float:right;
+}
+.top-player{
+  margin: 15px;
+}
+.bottom-player{
+  margin:15px;
+}
+
+img{
+  width: 28%;
+}
