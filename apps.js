@@ -15,7 +15,8 @@ var playerTwo = {
     right3:'<img src="img/bright-three.png" >',
     right4:'<img src="img/bbright-four.png" >',
     right5:'<img src="img/bright-five.png" >'
-  }
+  },
+  player: $('.bottom-player')
 }
 var playerOne = {
   name: 'Player One',
@@ -33,9 +34,9 @@ var playerOne = {
     left3:'<img src="img/tleft-three.png" >',
     left4:'<img src="img/tleft-four.png" >',
     left5:'<img src="img/tleft-five.png" >'
-  }
+  },
+  player: $('.top-player')
 }
-var bottomPlayer = $('.bottom-player')
 var gameBoard = $('.game-board')
 var timer = $('#timer')
 var count = 10;
@@ -45,11 +46,15 @@ var topRight = $('#top-right')
 var topLeft = $('#top-left')
 var players = [playerOne, playerTwo]
 
-var currentPlayer = players[Math.round(Math.random())].name
+$('#reload').on('click',function(){
+      document.location.reload(true)
+})
+var currentPlayer = players[Math.round(Math.random())]
 
 
 function playerTurn(){
-  $('#turn').text(currentPlayer + " gets to start!")
+  $('#turn').text(currentPlayer.name + " gets to start!")
+  currentPlayer.player.toggleClass('blue')
 }
 
 function countDown(){
@@ -57,6 +62,7 @@ function countDown(){
   if(count <= 0){
     clearInterval(theInterval)
     $('*').off()
+    // document.location.reload(true)
   }
   count = count -1
 }
@@ -68,10 +74,9 @@ $('button').on('click',function(){
 
 })
 
-// $('p').on('click', whichTurn)
-
 function whichTurn(){
-  if(currentPlayer == players[0].name){
+
+  if(currentPlayer == players[0]){
     console.log('hi')
     bottomLeft.on('click', changeBottomLeftP1)
     bottomRight.on('click', changeBottomRightP1)
@@ -79,7 +84,7 @@ function whichTurn(){
     topRight.on('click', changeTopRightP1)
 
 
-  } else if (currentPlayer == players[1].name){
+  } else if (currentPlayer == players[1]){
     console.log('hello')
     bottomLeft.on('click', changeBottomLeftP2)
     bottomRight.on('click', changeBottomRightP2)
@@ -95,7 +100,7 @@ function changeBottomLeftP1(){
      })
   }
   if(topLeft.html(playerOne.topLeft.left3)){
-    topLeft.on('click', function(){
+    bottomLeft.on('click', function(){
       bottomLeft.html(playerTwo.bottomLeft.left5)
     })
   }
@@ -184,9 +189,3 @@ function checkForFive(){
 
   }
 }
-
-//
-// function clearAll(){
-//   $(container).empty()
-//   $(*).off()
-// }
