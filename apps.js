@@ -47,11 +47,14 @@ var topLeft = $('#top-left')
 var players = [playerOne, playerTwo]
 var rules = $('#rules')
 var readRules = $('#read-rules')
+var theTopRight = document.querySelector('#top-right')
+// var round = -9
 
 $('#reload').on('click',function(){
       document.location.reload(true)
 })
-var currentPlayer = players[Math.round(Math.random())]
+var currentPlayer = players[1]
+//[Math.round(Math.random())]
 
 function playerTurn(){
   $('#turn').text(currentPlayer.name + " gets to start!")
@@ -65,12 +68,15 @@ gameBoard.on('click',function(){
 
 function countDown(){
   timer.text('Time Left : ' + count)
+  // round = round + 1
 
   if(count <= 0){
     clearInterval(theInterval)
-    $('*').off()
+    // $('#round').text('Round ' + round)
+    // $('*').off()
     // document.location.reload(true)
   }
+
   count = count -1
 }
 
@@ -78,6 +84,7 @@ $('#start').on('click',function(){
   theInterval = setInterval(countDown, 1000)
   whichTurn()
   playerTurn()
+  checkForFive()
 
 })
 
@@ -90,7 +97,6 @@ function whichTurn(){
     topLeft.on('click', changeTopLeftP1)
     topRight.on('click', changeTopRightP1)
 
-
   } else if (currentPlayer == players[1]){
     console.log('hello')
     bottomLeft.on('click', changeBottomLeftP2)
@@ -102,7 +108,7 @@ function whichTurn(){
 
 function changeBottomLeftP1(){
   if(topLeft.html(playerOne.topLeft.left1)){
-    bottomLeft.on('click', function(){
+    topLeft.on('click', function(){
        bottomLeft.html(playerTwo.bottomLeft.left2)
      })
   }
@@ -114,7 +120,7 @@ function changeBottomLeftP1(){
 }
 function changeBottomRightP1(){
   if(topRight.html(playerOne.topRight.right1)){
-    bottomRight.on('click', function(){
+    topRight.on('click', function(){
        bottomRight.html(playerTwo.bottomRight.right2)
      })
   }
@@ -181,18 +187,18 @@ function changeTopRightP2(){
 }
 
 function checkForFive(){
-  if(topRight.html(playerOne.topRight.right5)){
+  if(theTopRight.innerHTML == (playerOne.topRight.right5)){
     console.log(playerOne.name+ "lost")
   }
-  if(topLeft.html(playerOne.topLeft.left5)){
+  if(topLeft.innerHTML == playerOne.topLeft.left5){
     console.log(playerOne.name+ "lost")
 
   }
-  if(bottomRight.html(playerTwo.bottomRight.right5)){
+  if(bottomRight.innerHTML ==playerTwo.bottomRight.right5){
     console.log(playerTwo.name+ "lost")
 
   }
-  if(bottomLeft.html(playerTwo.bottomLeft.left5)){
+  if(bottomLeft.innerHTML ==playerTwo.bottomLeft.left5){
     console.log(playerTwo.name+ "lost")
 
   }

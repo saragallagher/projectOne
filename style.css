@@ -11,11 +11,11 @@ body{
 
 }
 .info-panel{
-  width: 30%;
+  width: 35%;
   height: 100%;
   border: 2px solid black;
   display: inline-block;
-  margin: 10px;
+  margin: 50px 0px 10px 10px;
   float:left;
   background-color: white;
 
@@ -26,11 +26,17 @@ button{
 #turn{
 margin:10px;
 }
+#round{
+  margin:10px;
+}
 #timer{
 margin: 10px;
 }
 #score{
 margin:10px;
+}
+#rules{
+  margin:10px;
 }
 .game-board{
   width: 60%;
