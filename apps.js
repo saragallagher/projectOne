@@ -47,7 +47,6 @@ var topLeft = $('#top-left')
 var players = [playerOne, playerTwo]
 var rules = $('#rules')
 var readRules = $('#read-rules')
-var theTopRight = document.querySelector('#top-right')
 // var round = -9
 
 $('#reload').on('click',function(){
@@ -146,7 +145,6 @@ function changeTopRightP1(){
   }
 }
 
-
 function changeBottomLeftP2(){
   if(bottomLeft.html(playerTwo.bottomLeft.left1)){
     topLeft.on('click', function(){
@@ -187,7 +185,7 @@ function changeTopRightP2(){
 }
 
 function checkForFive(){
-  if(theTopRight.innerHTML == (playerOne.topRight.right5)){
+  if(topRight.innerHTML == playerOne.topRight.right5){
     console.log(playerOne.name+ "lost")
   }
   if(topLeft.innerHTML == playerOne.topLeft.left5){
