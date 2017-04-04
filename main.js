@@ -69,10 +69,10 @@ function countDown(){
 
   if (count <= 0){
     clearInterval(theInterval)
-    playerTwo.selectLeft.removeEventListener('click', player1BottomLeft)
-    playerOne.selectLeft.removeEventListener('click', player1TopLeft)
-    playerTwo.selectRight.removeEventListener('click',player1BottomRight)
-    playerOne.selectRight.removeEventListener('click',player1TopRight)
+    playerTwo.selectLeft.removeEventListener('click', bottomLeft)
+    playerOne.selectLeft.removeEventListener('click', topLeft)
+    playerTwo.selectRight.removeEventListener('click',bottomRight)
+    playerOne.selectRight.removeEventListener('click',topRight)
     distribute.removeEventListener('click', distributeFingers)
     gameBoard.style.backgroundColor = 'rgba(255, 255, 255, 0.59)'
     whoWon()
@@ -82,113 +82,134 @@ function countDown(){
 }
 
 function playGame(){
-  //when the top player starts
-  if(currentPlayer == players[0]){
-
-    playerTwo.selectLeft.addEventListener('click', player1BottomLeft)
-    playerOne.selectLeft.addEventListener('click', player1TopLeft)
-    playerTwo.selectRight.addEventListener('click',player1BottomRight)
-    playerOne.selectRight.addEventListener('click',player1TopRight)
-  }
-  //when the bottom player starts
-  else if (currentPlayer == player[1]){
-
-  }
+    playerTwo.selectLeft.addEventListener('click', bottomLeft)
+    playerOne.selectLeft.addEventListener('click', topLeft)
+    playerTwo.selectRight.addEventListener('click',bottomRight)
+    playerOne.selectRight.addEventListener('click',topRight)
 }
 
-function player1BottomLeft(){
-  //1:1 = 2
-  if(playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' &&  playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
+function bottomLeft(){
+  var oneToOne = (playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' &&  playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">');
+  var oneToTwo = (playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo);
+  var oneToThree = (playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' && playerTwo.selectLeft.innerHTML == playerTwo.leftThree);
+  var oneToFour = (playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' && playerTwo.selectLeft.innerHTML == playerTwo.leftFour);
+  var twoToOne = (playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">');
+  var twoToTwo = (playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo);
+  var twoToThree = (playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == playerTwo.leftThree);
+  var threeToOne = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">');
+  var threeToTwo = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo);
+  var fourToOne = (playerOne.selectLeft.innerHTML == playerOne.leftFour && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">');
+  //= 2
+  if(oneToOne){
     playerTwo.selectLeft.innerHTML = playerTwo.leftTwo
   }
-  //2:1 = 3
-  if(playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
+  // = 3
+  if(oneToTwo || twoToOne){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
   }
-  //3:1 =4
-  if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
+  //1:3 = 4
+  if(oneToThree || twoToTwo ||threeToOne){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFour
   }
-  //2:2 = 4
-  if(playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo){
-    playerTwo.innerHTML = playerTwo.leftFour
-  }
-  //3:2 = 5
-  if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo){
+  //1:4 = 5
+  if(oneToFour || twoToThree || threeToTwo || fourToOne){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFive
     console.log('You Lost :(')
     checkP1Score()
   }
+
 }
 
-function player1TopLeft(){
-  //1:2 = 3
-  if(playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
-    playerOne.selectLeft.innerHTML = playerOne.leftThree
-  }
+function topLeft(){
+  var oneToOne = (playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
+  var oneToTwo = (playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == playerOne.leftTwo);
+  var oneToThree =(playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'&& playerOne.selectLeft.innerHTML == playerOne.leftThree);
+  var oneToFour = (playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == playerOne.leftFour);
+  var twoToOne = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
+  var twoToTwo = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftTwo);
+  var twoToThree = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftThree);
+  var threeToOne = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
+  var threeToTwo = (playerTwo.selectLeft.innerHTML==playerTwo.leftThree && playerOne.selectLeft.innerHTML == playerOne.leftTwo)
+  var fourToOne = (playerTwo.selectLeft.innerHTML == playerTwo.leftFour && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
+
   //1:1 = 2
-  if(playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+  if(oneToOne){
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
   //2:1 = 3
-  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+  if(twoToOne || oneToTwo ){
     playerOne.selectLeft.innerHTML = playerOne.leftThree
   }
-
+  //2:2 = 4
+  if(twoToTwo || oneToThree || threeToOne){
+    playerOne.selectLeft.innerHTML = playerOne.leftFour
+  }
   //3:2=5
-  if(playerTwo.selectLeft.innerHTML==playerTwo.leftThree && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
+  if(threeToTwo || twoToThree || oneToFour || fourToOne){
     playerOne.selectLeft.innerHTML = playerOne.leftFive
     console.log('You Lost :(')
     checkP2Score()
-
-  }
-  //2:2 = 4
-  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
-    playerOne.selectLeft.innerHTML = playerOne.leftFour
   }
 }
 
-function player1BottomRight(){
-
-  //1:1 = 2
-  if(playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">'){
+function bottomRight(){
+  var oneToOne =(playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
+  var oneToTwo = (playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var oneToThree = (playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightThree);
+  var oneToFour = (playerOne.selectRight.innerHTML == '<img src ="img/tright-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightFour);
+  var twoToOne =(playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
+  var twoToTwo = (playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var twoToThree = (playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == playerTwo.rightThree);
+  var threeToOne = (playerOne.selectRight.innerHTML == playerOne.rightThree && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">')
+  var threeToTwo = (playerOne.selectRight.innerHTML == playerOne.rightThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var fourToOne =  (playerOne.selectRight.innerHTML == playerOne.rightFour && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
+  //= 2
+  if(oneToOne){
     playerTwo.selectRight.innerHTML = playerTwo.rightTwo
   }
-  //2:1 = 3
-  if(playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">'){
-    playerTwo.selectRight.innerHTML  =playerTwo.rightThree
+  //= 3
+  if(twoToOne || oneToTwo){
+    playerTwo.selectRight.innerHTML  = playerTwo.rightThree
   }
-  //2:2 = 4
-  if(playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
+  //= 4
+  if(twoToTwo || oneToThree || threeToOne){
     playerTwo.selectRight.innerHTML = playerTwo.rightFour
   }
-  //1:2 = 3
-  // if(playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
-  //   playerTwo.selectRight.innerHTML = playerTwo.rightThree
-  // }
-  //3:?(2) =5
-  if(playerOne.selectRight.innerHTML == playerOne.rightThree){
+
+  //=5
+  if(threeToTwo || twoToThree || oneToFour || fourToOne){
     playerTwo.selectRight.innerHTML = playerTwo.rightFive
     console.log('You Lost :(')
     checkP1Score()
   }
 }
 
-function player1TopRight(){
+function topRight(){
+  var oneToOne = (playerTwo.selectRight.innerHTML =='<img src="img/bright-one.png">' && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
+  var oneToTwo = (playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">' && playerOne.selectRight.innerHTML == playerOne.rightTwo);
+  var oneToThree = (playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">' && playerOne.selectRight.innerHTML == playerOne.rightThree);
+  var oneToFour =(playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">'&& playerOne.selectRight.innerHTML == playerOne.rightFour);
+  var twoToOne = (playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
+  var twoToTwo = (playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == playerOne.rightTwo);
+  var twoToThree = (playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == playerOne.rightThree);
+  var threeToOne = (playerTwo.selectRight.innerHTML == playerTwo.rightThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
+  var threeToTwo =(playerTwo.selectRight.innerHTML == playerTwo.rightThree && playerOne.selectRight.innerHTML == playerOne.rightTwo)
+  var fourToOne = (playerTwo.selectRight.innerHTML == playerTwo.rightFour && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
+
   //1:1=2
-  if(playerTwo.selectRight.innerHTML =='<img src="img/bright-one.png">' && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
+  if(oneToOne){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
   }
   //2:1 = 3
-  if(playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
+  if(twoToOne || oneToTwo){
     playerOne.selectRight.innerHTML = playerOne.rightThree
   }
   //2:2= 4
-  if(playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == playerOne.rightTwo){
+  if(twoToTwo || threeToOne || oneToThree){
     playerOne.selectRight.innerHTML = playerOne.rightFour
   }
   //3:2 = 5
-  if(playerTwo.selectRight.innerHTML == playerTwo.rightThree && playerOne.selectRight.innerHTML == playerOne.rightTwo){
+  if(threeToTwo || twoToThree || fourToOne || oneToFour){
     playerOne.selectRight.innerHTML = playerOne.rightFive
     console.log('You Lost :(')
     checkP2Score()
@@ -197,28 +218,33 @@ function player1TopRight(){
 }
 
 function distributeFingers(){
+  var threeToOneP1 = (playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
+  var oneToThreeP1 = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
+  var threeToTwoP2 =(playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var twoToTwoP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var oneToFourP2 = (playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightFour);
   //3&1 = 2&2
-  if(playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+  if(threeToOneP1){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
   //1&3 = 2&2
-  if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
+  if(oneToThreeP1){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
   //3&2 = 4&1
-  if(playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
+  if(threeToTwoP2){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFour
     playerTwo.selectRight.innerHTML = playerTwo.rightOne
   }
   //2&2 = 3&1
-  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
+  if(twoToTwoP2){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
     playerTwo.selectRight.innerHTML = playerTwo.rightOne
   }
   //1&4=2&2
-  if(playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightFour){
+  if(oneToFourP2){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
     playerTwo.selectRight.innerHTML = playerTwo.rightTwo
   }
