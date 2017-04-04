@@ -24,24 +24,23 @@ button{
   margin: 10px;
 }
 #turn{
-margin:10px;
-}
-#round{
   margin:10px;
+  font-size: 25px;
 }
+
 #timer{
-margin: 10px;
+  font-size: 20px;
+  margin: 10px;
 }
 #score-p1{
-margin:10px;
+  margin:10px;
 }
 #score-p2{
-margin:10px;
+  margin:10px;
 }
 #rules{
   margin:10px;
 }
-
 .game-board{
   width: 60%;
   height: 100%;
@@ -52,13 +51,14 @@ margin:10px;
   background-color: white;
 }
 .top-player{
+  font-size: 25px;
   float: right;
   margin: 5px;
   border: 2px solid black;
 
 }
 .bottom-player{
-
+  font-size: 25px;
   margin:5px;
   border: 2px solid black;
   display:inline-block;
@@ -80,7 +80,4 @@ button{
 img{
   margin: 0px 30px;
   width: 25%;
-}
-p{
-  color: red;
 }
