@@ -88,15 +88,19 @@ function playGame(){
 }
 
 function player1BottomLeft(){
-  if(playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+  //when the first player left hand has 1,& second player has 1 on the left,  give the second players left hand 2
+  if(playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' &&  playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftTwo
   }
-  if(playerOne.selectLeft.innerHTML == playerOne.leftTwo){
+  //when the first player left hand has 2, and the second player has 1 on the left, give the second players left hand 3
+  if(playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
   }
+  //when the first player left hand has 3 and the second players lef hand has 1 give the second player's left hand 4
   if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFour
   }
+  //when the first player left hand has 3 and the second players left hand has two give the second player's left hand 5
   if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFive
     console.log('You Lost :(')
@@ -105,10 +109,21 @@ function player1BottomLeft(){
 }
 
 function player1TopLeft(){
-  if(playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' || playerTwo.selectLeft.innerHTML == playerTwo.leftTwo){
+  //when the second player's left hand has 1 & the first players left has 2, give the first player 3
+  if(playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">' && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
     playerOne.selectLeft.innerHTML = playerOne.leftThree
   }
-  if(playerTwo.selectLeft.innerHTML==playerTwo.leftThree){
+  //when the second player's left hand has 2 & the first players left has 1 give first player 3 on the left
+  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+    playerOne.selectLeft.innerHTML = playerOne.leftThree
+  }
+  //when the second player's left hand has 2 and the first player's left has 2, give the first player's left 4
+  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
+    playerOne.selectLeft.innerHTML = playerOne.leftFour
+
+  }
+  //when the second player's left has 3 and the first player's left has 2, give the first player's left 5
+  if(playerTwo.selectLeft.innerHTML==playerTwo.leftThree && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
     playerOne.selectLeft.innerHTML = playerOne.leftFive
     console.log('You Lost :(')
     scoreP2.innerText = 'Player Two: 1'
@@ -119,12 +134,17 @@ function player1TopLeft(){
 }
 
 function player1BottomRight(){
-  if(playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
+  //when player one has 1 on the right and player two has 1 on the right, give player two 2 on the right
+  if(playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">' && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">'){
     playerTwo.selectRight.innerHTML = playerTwo.rightTwo
+  }
+  if(playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">'){
+    playerTwo.selectRight.innerHTML  =playerTwo.rightThree
   }
   if(playerOne.selectRight.innerHTML == playerOne.rightTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
     playerTwo.selectRight.innerHTML = playerTwo.rightFour
   }
+
   if(playerOne.selectRight.innerHTML == playerOne.rightThree){
     playerTwo.selectRight.innerHTML = playerTwo.rightFive
     console.log('You Lost :(')
@@ -139,10 +159,19 @@ function player1TopRight(){
   if(playerTwo.selectRight.innerHTML == playerTwo.rightTwo && playerOne.selectRight.innerHTML == playerOne.rightTwo){
     playerOne.selectRight.innerHTML = playerOne.rightFour
   }
+  if(playerTwo.selectRight.innerHTML == playerTwo.rightThree && playerOne.selectRight.innerHTML == playerOne.rightTwo){
+    playerOne.selectRight.innerHTML = playerOne.rightFive
+    console.log('You Lost :(')
+    scoreP2.innerText = 'Player Two: 1'
+  }
 }
 
 function distributeFingers(){
   if(playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
+    playerOne.selectRight.innerHTML = playerOne.rightTwo
+    playerOne.selectLeft.innerHTML = playerOne.leftTwo
+  }
+  if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
