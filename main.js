@@ -66,7 +66,6 @@ function whichTurn(){
 
 function countDown(){
   timer.innerHTML = 'Time Left: ' + count;
-
   if (count <= 0){
     clearInterval(theInterval)
     playerTwo.selectLeft.removeEventListener('click', bottomLeft)
@@ -77,7 +76,6 @@ function countDown(){
     gameBoard.style.backgroundColor = 'rgba(255, 255, 255, 0.59)'
     whoWon()
   }
-
   count = count -1
 }
 
