@@ -44,8 +44,8 @@ var count = 10;
 var players = [topPlayer, bottomPlayer]
 var scoreP1 = document.querySelector('#score-p1')
 var scoreP2 = document.querySelector('#score-p2')
+var gameBoard = document.querySelector('.game-board')
 var currentPlayer = players[0]
-
 
 reload.addEventListener('click', function(){
   document.location.reload(true)
@@ -54,11 +54,8 @@ start.addEventListener('click', function(){
   theInterval = setInterval(countDown, 1000)
   whichTurn()
   playGame()
-
-
 })
 distribute.addEventListener('click',distributeFingers)
-
 
 function whichTurn(){
   turn.innerHTML = currentPlayer.name + " get's to start!"
@@ -72,6 +69,7 @@ function countDown(){
     playerOne.selectLeft.removeEventListener('click', player1TopLeft)
     playerTwo.selectRight.removeEventListener('click',player1BottomRight)
     playerOne.selectRight.removeEventListener('click',player1TopRight)
+    gameBoard.style.backgroundColor = 'rgba(255, 255, 255, 0.59)'
   }
   count = count -1
 }
