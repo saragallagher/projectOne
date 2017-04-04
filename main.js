@@ -40,7 +40,7 @@ var playerTwo = {
 }
 var timer = document.querySelector('#timer')
 var turn = document.querySelector('#turn')
-var count = 20;
+var count = 10;
 var players = [topPlayer, bottomPlayer]
 var scoreP1 = document.querySelector('#score-p1')
 var scoreP2 = document.querySelector('#score-p2')
@@ -68,6 +68,10 @@ function countDown(){
   timer.innerHTML = 'Time Left: ' + count;
   if (count <= 0){
     clearInterval(theInterval)
+    playerTwo.selectLeft.removeEventListener('click', player1BottomLeft)
+    playerOne.selectLeft.removeEventListener('click', player1TopLeft)
+    playerTwo.selectRight.removeEventListener('click',player1BottomRight)
+    playerOne.selectRight.removeEventListener('click',player1TopRight)
   }
   count = count -1
 }
@@ -88,19 +92,23 @@ function playGame(){
 }
 
 function player1BottomLeft(){
-  //when the first player left hand has 1,& second player has 1 on the left,  give the second players left hand 2
+  //when the first player left hand has 1,& second player has 1 on the left,
+  // give the second players left hand 2
   if(playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' &&  playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftTwo
   }
-  //when the first player left hand has 2, and the second player has 1 on the left, give the second players left hand 3
+  //when the first player left hand has 2, and the second player has 1 on the left,
+  //give the second players left hand 3
   if(playerOne.selectLeft.innerHTML == playerOne.leftTwo && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
   }
-  //when the first player left hand has 3 and the second players lef hand has 1 give the second player's left hand 4
+  //when the first player left hand has 3 and the second players lef hand has 1
+  //give the second player's left hand 4
   if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">'){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFour
   }
-  //when the first player left hand has 3 and the second players left hand has two give the second player's left hand 5
+  //when the first player left hand has 3 and the second players left hand has two
+  //give the second player's left hand 5
   if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerTwo.selectLeft.innerHTML == playerTwo.leftTwo){
     playerTwo.selectLeft.innerHTML = playerTwo.leftFive
     console.log('You Lost :(')
@@ -120,7 +128,6 @@ function player1TopLeft(){
   //when the second player's left hand has 2 and the first player's left has 2, give the first player's left 4
   if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
     playerOne.selectLeft.innerHTML = playerOne.leftFour
-
   }
   //when the second player's left has 3 and the first player's left has 2, give the first player's left 5
   if(playerTwo.selectLeft.innerHTML==playerTwo.leftThree && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
@@ -128,9 +135,6 @@ function player1TopLeft(){
     console.log('You Lost :(')
     scoreP2.innerText = 'Player Two: 1'
   }
-  // if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerOne.selectLeft.innerHTML == playerOne.leftTwo){
-  //   playerOne.selectLeft.innerHTML = playerOne.leftFour
-  // }
 }
 
 function player1BottomRight(){
@@ -167,13 +171,29 @@ function player1TopRight(){
 }
 
 function distributeFingers(){
+  //When player one's right hand has 3 & left has 1; distribute so its 2&2
   if(playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">'){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
+  //When player one's right hand has 1 & left has 3; distribute so its 2&2
   if(playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">'){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
-
+  //When player two's left hand has 3 & right has 2; distribute so its 4&1
+  if(playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
+    playerTwo.selectLeft.innerHTML = playerTwo.leftFour
+    playerTwo.selectRight.innerHTML = playerTwo.rightOne
+  }
+  //when player two's left hand has 2 & right has 2; distribute so its 3&1
+  if(playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo){
+    playerTwo.selectLeft.innerHTML = playerTwo.leftThree
+    playerTwo.selectRight.innerHTML = playerTwo.rightOne
+  }
+  //when player two's left hand has 1 & right has 4; distribute so its 3&2
+  if(playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightFour){
+    playerTwo.selectLeft.innerHTML = playerTwo.leftThree
+    playerTwo.selectRight.innerHTML = playerTwo.rightTwo
+  }
 }

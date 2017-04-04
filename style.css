@@ -32,12 +32,16 @@ margin:10px;
 #timer{
 margin: 10px;
 }
-#score{
+#score-p1{
+margin:10px;
+}
+#score-p2{
 margin:10px;
 }
 #rules{
   margin:10px;
 }
+
 .game-board{
   width: 60%;
   height: 100%;
