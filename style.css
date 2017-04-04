@@ -41,6 +41,10 @@ button{
 #rules{
   margin:10px;
 }
+#winner{
+  font-size: 20px;
+  margin: 10px;
+}
 .game-board{
   width: 60%;
   height: 100%;

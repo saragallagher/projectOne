@@ -2,11 +2,11 @@ var start = document.querySelector('#start')
 var reload = document.querySelector('#reload')
 var distribute = document.querySelector('#distribute')
 var topPlayer = {
-  playerOne: document.querySelector('#top-player'),
+  playerOne: document.querySelector('.top-player'),
   name: 'Player One',
 }
 var bottomPlayer = {
-  playerTwo: document.querySelector('#bottom-player'),
+  playerTwo: document.querySelector('.bottom-player'),
   name: 'Player Two',
 }
 var playerOne = {
@@ -46,8 +46,9 @@ var player1Score = document.querySelector('#score-p1')
 var player2Score = document.querySelector('#score-p2')
 var gameBoard = document.querySelector('.game-board')
 var currentPlayer = players[0]
-var scoreP1 = 0
+var scoreP1 = 1
 var scoreP2 = 1
+var winner = document.querySelector('#winner')
 
 start.addEventListener('click', function(){
   theInterval = setInterval(countDown, 1000)
@@ -74,6 +75,7 @@ function countDown(){
     playerOne.selectRight.removeEventListener('click',player1TopRight)
     distribute.removeEventListener('click', distributeFingers)
     gameBoard.style.backgroundColor = 'rgba(255, 255, 255, 0.59)'
+    whoWon()
   }
 
   count = count -1
@@ -243,4 +245,23 @@ function checkP2Score(){
     player2Score.innerHTML == 'Player Two: '+ scoreP2
   }
   scoreP2 +=1
+}
+
+function whoWon(){
+  if (scoreP2 <= scoreP1){
+    console.log('Player One Won')
+    topPlayer.playerOne.style.backgroundColor= 'rgba(0, 161, 255, 0.22)'
+    winner.innerHTML = "Player One is the Winner!"
+  }
+  if(scoreP1 <= scoreP2){
+    console.log('Player Two Won')
+    bottomPlayer.playerTwo.style.backgroundColor= 'rgba(0, 161, 255, 0.22)'
+    winner.innerHTML = "Player Two is the Winner!"
+  }
+   if(scoreP1 == scoreP2){
+    console.log('Tie! Start Again')
+    topPlayer.playerOne.style.backgroundColor= 'rgba(0,0,0,0)'
+    bottomPlayer.playerTwo.style.backgroundColor= 'rgba(0,0,0,0)'
+    winner.innerHTML = "It's a Tie! Reload and Start Agian!"
+  }
 }
