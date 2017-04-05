@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container">
+    <div class="title-page">
+      <div id="rules-title">
+        <h2>Rules:</h2>
+        <ol>
+        <li> Each Player Takes Turns Tapping a Hand</li>
+        <li> Left can only Tap Left</li>
+        <li> Right can only Tap Right</li>
+        <li> You can skip a turn to distribute your fingers</li>
+        <!-- <li>Best 2 out of 3 Wins!</li> -->
+        <li> When you reach 5 that hand is out</li>
+        <li> You can only add up to 5
+            <br>
+             (Ex. 4 can not increase upon 2)
+        </li>
+        <button id="clear"> Let's Start! </button>
+      </div>
+    </div>
+
+<div class="hidden">
+    <div class="container ">
       <div class="info-panel">
 
         <div id="turn">
@@ -64,8 +83,9 @@
         </div>
       </div>
     </div>
+</div>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" charset="utf-8"></script>
-    
+
     <script src="main.js" charset="utf-8"></script>
   </body>
 </html>

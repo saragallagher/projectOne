@@ -49,6 +49,15 @@ var currentPlayer = players[1]
 var scoreP1 = 1
 var scoreP2 = 1
 var winner = document.querySelector('#winner')
+var clear = document.querySelector('#clear')
+var titlePage = document.querySelector('.title-page')
+var hidden = document.querySelector('.hidden')
+var container = document.querySelector('.container')
+
+clear.addEventListener('click',function(){
+  titlePage.style.display = 'none'
+  hidden.style.display = 'block'
+})
 
 start.addEventListener('click', function(){
   theInterval = setInterval(countDown, 1000)
