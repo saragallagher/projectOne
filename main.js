@@ -54,38 +54,16 @@ var titlePage = document.querySelector('.title-page')
 var hidden = document.querySelector('.hidden')
 var container = document.querySelector('.container')
 
-clear.addEventListener('click',function(){
-  titlePage.style.display = 'none'
-  hidden.style.display = 'block'
-})
+
 
 start.addEventListener('click', function(){
   theInterval = setInterval(countDown, 1000)
   playGame()
 })
 
-// reload.addEventListener('click', function(){
-//   // document.location.reload(true)
-//   playerOne.selectLeft.innerHTML = playerOne.leftOne
-//   playerOne.selectRight.innerHTML = playerOne.rightOne
-//   playerTwo.selectLeft.innerHTML = playerTwo.leftOne
-//   playerTwo.selectRight.innerHTML = playerTwo.rightOne
-//   distribute.style.backgroundColor = '#3e3e3e'
-//   turn.innerHTML = 'Press Play to Select Player'
-//   topPlayer.playerOne.style.backgroundColor= 'rgba(0,0,0,0)'
-//   bottomPlayer.playerTwo.style.backgroundColor= 'rgba(0,0,0,0)'
-//   gameBoard.style.backgroundColor = 'white'
-//   playerTwo.selectLeft.removeEventListener('click', bottomLeft)
-//   playerOne.selectLeft.removeEventListener('click', topLeft)
-//   playerTwo.selectRight.removeEventListener('click',bottomRight)
-//   playerOne.selectRight.removeEventListener('click',topRight)
-//   distribute.removeEventListener('click', distributeFingers)
-//   clearInterval(theInterval)
-//   timer.innerHTML = 'Time Left: '
-//   count = 10;
-//   winner.innetText = ''
-//
-// })
+reload.addEventListener('click', function(){
+  document.location.reload(true)
+})
 
 distribute.addEventListener('click',distributeFingers)
 start.addEventListener('click',switchTurns)
