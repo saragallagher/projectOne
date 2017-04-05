@@ -45,27 +45,37 @@ var players = [topPlayer, bottomPlayer]
 var player1Score = document.querySelector('#score-p1')
 var player2Score = document.querySelector('#score-p2')
 var gameBoard = document.querySelector('.game-board')
-var currentPlayer = players[0]
+var currentPlayer = players[1]
 var scoreP1 = 1
 var scoreP2 = 1
 var winner = document.querySelector('#winner')
 
 start.addEventListener('click', function(){
   theInterval = setInterval(countDown, 1000)
-  whichTurn()
+
   playGame()
 })
 reload.addEventListener('click', function(){
   document.location.reload(true)
 })
 distribute.addEventListener('click',distributeFingers)
+gameBoard.addEventListener('click',switchTurns)
 
-function whichTurn(){
-  turn.innerHTML = currentPlayer.name + " get's to start!"
-}
+function switchTurns(){
+      if (currentPlayer == players[0]){
+        currentPlayer = players[1]
+        turn.innerHTML = currentPlayer.name
+        //bottomPlayer.playerTwo.style.backgroundColor= 'rgba(0, 161, 255, 0.22)'
+      } else{
+        currentPlayer = players[0]
+        turn.innerHTML = currentPlayer.name
+        //topPlayer.playerOne.style.backgroundColor= 'rgba(0, 161, 255, 0.22)'
+      }
+    }
 
 function countDown(){
   timer.innerHTML = 'Time Left: ' + count;
+
   if (count <= 0){
     clearInterval(theInterval)
     playerTwo.selectLeft.removeEventListener('click', bottomLeft)
@@ -218,32 +228,23 @@ function topRight(){
 function distributeFingers(){
   var threeToOneP1 = (playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
   var oneToThreeP1 = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
-  var threeToTwoP2 =(playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
   var twoToTwoP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
-  var oneToFourP2 = (playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightFour);
+  var oneToThreeP2 = (playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightThree);
+  var threeToOneP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
   //3&1 = 2&2
-  if(threeToOneP1){
+  if(threeToOneP1 || oneToThreeP1){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
     playerOne.selectLeft.innerHTML = playerOne.leftTwo
   }
-  //1&3 = 2&2
-  if(oneToThreeP1){
-    playerOne.selectRight.innerHTML = playerOne.rightTwo
-    playerOne.selectLeft.innerHTML = playerOne.leftTwo
-  }
-  //3&2 = 4&1
-  if(threeToTwoP2){
-    playerTwo.selectLeft.innerHTML = playerTwo.leftFour
-    playerTwo.selectRight.innerHTML = playerTwo.rightOne
-  }
+
   //2&2 = 3&1
   if(twoToTwoP2){
     playerTwo.selectLeft.innerHTML = playerTwo.leftThree
     playerTwo.selectRight.innerHTML = playerTwo.rightOne
   }
-  //1&4=2&2
-  if(oneToFourP2){
-    playerTwo.selectLeft.innerHTML = playerTwo.leftThree
+  //1&3=2&2
+  if(oneToThreeP2 || threeToOneP2){
+    playerTwo.selectLeft.innerHTML = playerTwo.leftTwo
     playerTwo.selectRight.innerHTML = playerTwo.rightTwo
   }
 }
