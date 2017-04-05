@@ -231,8 +231,9 @@ function suggestDistribute(){
   var oneToThreeP1 = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
   var threeToOneP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
   var oneToThreeP2 = (playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightThree);
+  var threeToTwoP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
 
-  if (threeToOneP1 || oneToThreeP2 || oneToThreeP1 || threeToOneP2){
+  if (threeToOneP1 || oneToThreeP2 || oneToThreeP1 || threeToOneP2 || threeToTwoP2){
     distribute.style.backgroundColor = '#8a8a8a'
   }
 }
@@ -240,9 +241,10 @@ function suggestDistribute(){
 function distributeFingers(){
   var threeToOneP1 = (playerOne.selectRight.innerHTML == playerOne.rightThree && playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">');
   var oneToThreeP1 = (playerOne.selectLeft.innerHTML == playerOne.leftThree && playerOne.selectRight.innerHTML == '<img src="img/tright-one.png">');
-  // var twoToTwoP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftTwo && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
+  var threeToTwoP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == playerTwo.rightTwo);
   var oneToThreeP2 = (playerTwo.selectLeft.innerHTML  == '<img src="img/bleft-one.png">' && playerTwo.selectRight.innerHTML == playerTwo.rightThree);
   var threeToOneP2 = (playerTwo.selectLeft.innerHTML == playerTwo.leftThree && playerTwo.selectRight.innerHTML == '<img src="img/bright-one.png">');
+
   //3&1 = 2&2
   if(threeToOneP1 || oneToThreeP1){
     playerOne.selectRight.innerHTML = playerOne.rightTwo
@@ -251,12 +253,13 @@ function distributeFingers(){
 
   }
 
-  // //2&2 = 3&1
-  // if(twoToTwoP2){
-  //   playerTwo.selectLeft.innerHTML = playerTwo.leftThree
-  //   playerTwo.selectRight.innerHTML = playerTwo.rightOne
-  //
-  // }
+  //3&2 = 4&1
+  if(threeToTwoP2){
+    playerTwo.selectLeft.innerHTML = playerTwo.leftFour
+    playerTwo.selectRight.innerHTML = playerTwo.rightOne
+    distribute.style.backgroundColor = '#3e3e3e'
+
+  }
   //1&3=2&2
   if(oneToThreeP2 || threeToOneP2){
     playerTwo.selectLeft.innerHTML = playerTwo.leftTwo
