@@ -15,7 +15,10 @@ var player2Score = 0
 var $topPlayer = $('.top-player')
 var $bottomPlayer = $('.bottom-player')
 var $winner = $('#winner')
+var players = [$bottomPlayer, $topPlayer]
+var $turn = $('#turn')
 
+var currentPlayer = players[0]
 
 
 $finger.on('click', increase)
@@ -74,6 +77,23 @@ function increase(){
       $(this).attr('class', 'finger-'+ total + ' finger ' + hand)
 
 }
+
+function switchCurrentPlayer(){
+  if(currentPlayer == players[0]){
+    currentPlayer = players[1]
+    $turn.text('Player One')
+  }else{
+    currentPlayer = players[0]
+    $turn.text('Player Two')
+  }
+}
+
+// $gameBoard.on('click',function(){
+//   currentPlayer.toggleClass('blue')
+// })
+
+$gameBoard.on('click', switchCurrentPlayer)
+
 
 $finger.on('click', playerOneLScore)
 $finger.on('click', playerOneRScore)

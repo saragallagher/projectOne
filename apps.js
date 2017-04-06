@@ -61,6 +61,7 @@ function playerTurn(){
 }
 
 gameBoard.on('click',function(){
+  
   currentPlayer.player.toggleClass('blue')
 
 })
