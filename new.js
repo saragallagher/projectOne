@@ -88,10 +88,6 @@ function switchCurrentPlayer(){
   }
 }
 
-// $gameBoard.on('click',function(){
-//   currentPlayer.toggleClass('blue')
-// })
-
 $gameBoard.on('click', switchCurrentPlayer)
 
 
