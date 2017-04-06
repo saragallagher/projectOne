@@ -2,6 +2,7 @@ var $finger = $('.finger')
 var $start = $('#start')
 var count = 10;
 var $timer = $('#timer')
+var $reload = $('#reload')
 var $gameBoard = $('.game-board')
 
 $finger.on('click', increase)
@@ -21,6 +22,9 @@ function increase(){
 
 $start.on('click', function(){
   theInterval = setInterval(countDown, 1000)
+})
+$reload.on('click', function(){
+  document.location.reload(true)
 })
 
 function countDown(){

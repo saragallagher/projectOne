@@ -1,43 +1,6 @@
 var start = document.querySelector('#start')
 var reload = document.querySelector('#reload')
 var distribute = document.querySelector('#distribute')
-var topPlayer = {
-  playerOne: document.querySelector('.top-player'),
-  name: 'Player One',
-}
-var bottomPlayer = {
-  playerTwo: document.querySelector('.bottom-player'),
-  name: 'Player Two',
-}
-var playerOne = {
-  selectLeft: document.querySelector('#top-left'),
-  selectRight: document.querySelector('#top-right'),
-  leftOne: '<img src="img/tleft-one.png"> ',
-  leftTwo: '<img src="img/tleft-two.png">',
-  leftThree: '<img src="img/tleft-three.png">',
-  leftFour: '<img src="img/tleft-four.png">',
-  leftFive: '<img src="img/tleft-five.png">',
-  rightOne: '<img src="img/tright-one.png">',
-  rightTwo: '<img src="img/tright-two.png">',
-  rightThree: '<img src="img/tright-three.png">',
-  rightFour: '<img src="img/tright-four.png">',
-  rightFive: '<img src="img/tright-five.png">'
-
-}
-var playerTwo = {
-  selectLeft: document.querySelector('#bottom-left'),
-  selectRight: document.querySelector('#bottom-right'),
-  leftOne: '<img src="img/bleft-one.png"> ',
-  leftTwo: '<img src="img/bleft-two.png">',
-  leftThree: '<img src="img/bleft-three.png">',
-  leftFour: '<img src="img/bleft-four.png">',
-  leftFive: '<img src="img/bleft-five.png">',
-  rightOne: '<img src="img/bright-one.png">',
-  rightTwo: '<img src="img/bright-two.png">',
-  rightThree: '<img src="img/bright-three.png">',
-  rightFour: '<img src="img/bright-four.png">',
-  rightFive: '<img src="img/bright-five.png">'
-}
 var timer = document.querySelector('#timer')
 var turn = document.querySelector('#turn')
 var count = 10;
@@ -55,18 +18,14 @@ var hidden = document.querySelector('.hidden')
 var container = document.querySelector('.container')
 
 
-
-start.addEventListener('click', function(){
-  theInterval = setInterval(countDown, 1000)
-  playGame()
-})
-
 reload.addEventListener('click', function(){
   document.location.reload(true)
 })
 
 distribute.addEventListener('click',distributeFingers)
+
 start.addEventListener('click',switchTurns)
+
 start.addEventListener('click', suggestDistribute)
 
 function switchTurns(){
@@ -80,30 +39,6 @@ function switchTurns(){
         //topPlayer.playerOne.style.backgroundColor= 'rgba(0, 161, 255, 0.22)'
       }
     }
-
-function countDown(){
-  timer.innerHTML = 'Time Left: ' + count;
-
-  if (count <= 0){
-    clearInterval(theInterval)
-    playerTwo.selectLeft.removeEventListener('click', bottomLeft)
-    playerOne.selectLeft.removeEventListener('click', topLeft)
-    playerTwo.selectRight.removeEventListener('click',bottomRight)
-    playerOne.selectRight.removeEventListener('click',topRight)
-    distribute.removeEventListener('click', distributeFingers)
-    gameBoard.style.backgroundColor = 'rgba(255, 255, 255, 0.59)'
-    whoWon()
-  }
-  count = count -1
-}
-
-function playGame(){
-    playerTwo.selectLeft.addEventListener('click', bottomLeft)
-    playerOne.selectLeft.addEventListener('click', topLeft)
-    playerTwo.selectRight.addEventListener('click',bottomRight)
-    playerOne.selectRight.addEventListener('click',topRight)
-
-}
 
 function bottomLeft(){
   var oneToOne = (playerOne.selectLeft.innerHTML == '<img src="img/tleft-one.png">' &&  playerTwo.selectLeft.innerHTML == '<img src="img/bleft-one.png">');
