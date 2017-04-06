@@ -43,7 +43,8 @@ body{
 .finger{
   width: 35%;
   height: 260px;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
+  color: rgba(255,255,255, 0);
   display: inline-block;
   margin: 2px;
   background-size: 64%;
@@ -114,12 +115,9 @@ button{
 
 .finger-1{
   background-image: url('img/one.png');
-
-
 }
 .finger-2{
   background-image: url('img/two.png');
-
 }
 .finger-3{
   background-image: url('img/three.png');
@@ -131,7 +129,6 @@ button{
 }
 .finger-5{
   background-image: url('img/five.png');
-
 }
 
 #one-right{

@@ -4,6 +4,10 @@ var count = 10;
 var $timer = $('#timer')
 var $reload = $('#reload')
 var $gameBoard = $('.game-board')
+var $oneLeft = $('#one-left')
+var $oneRight = $('#one-right')
+var $twoLeft = $('#two-left')
+var $twoRight = $('#two-right')
 
 $finger.on('click', increase)
 
@@ -36,3 +40,29 @@ function countDown(){
   }
   count = count -1;
 }
+
+
+$twoRight.on('mouseenter', function(){
+  $oneRight.css({transform: ' rotateX(-180deg) rotateZ(16deg)'})
+})
+$twoRight.on('mouseleave', function(){
+  $oneRight.css({transform: 'rotateX(-180deg) rotateZ(0deg)'})
+})
+$oneLeft.on('mouseenter', function(){
+  $twoLeft.css({transform: 'rotateZ(16deg)'})
+})
+$oneLeft.on('mouseleave', function(){
+  $twoLeft.css({transform: 'rotateZ(0deg)'})
+})
+$oneRight.on('mouseenter', function(){
+  $twoRight.css({transform: 'rotateY(180deg) rotateZ(16deg)'})
+})
+$oneRight.on('mouseleave', function(){
+  $twoRight.css({transform: 'rotateY(180deg) rotateZ(0deg)'})
+})
+$twoLeft.on('mouseenter', function(){
+  $oneLeft.css({transform: 'rotate(180deg) rotateZ(16deg)'})
+})
+$twoLeft.on('mouseleave', function(){
+  $oneLeft.css({transform: 'rotate(180deg) rotateZ(0deg)'})
+})
