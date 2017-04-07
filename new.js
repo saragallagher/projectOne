@@ -137,7 +137,7 @@ function whoWon(){
   if(player2Score < player1Score){
     console.log('PLAYA ONE')
     $topPlayer.addClass('blue')
-    $winner.text('Player One Wins')
+    $winner.text('Player One Wins!')
   }
   if(player2Score > player1Score){
     console.log('PLAYA TWO')
