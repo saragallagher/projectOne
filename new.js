@@ -21,39 +21,38 @@ var $turn = $('#turn')
 var currentPlayer = players[0]
 
 
-// $finger.on('click', increase)
+$finger.on('click', increase)
 $start.on('click', function(){
   theInterval = setInterval(countDown, 1000)
-  $finger.on('click', increase)
-  $twoRight.on('mouseenter', function(){
-    $oneRight.css({transform: ' rotateX(-180deg) rotateZ(16deg)'})
-  })
-  $twoRight.on('mouseleave', function(){
-    $oneRight.css({transform: 'rotateX(-180deg) rotateZ(0deg)'})
-  })
-  $oneLeft.on('mouseenter', function(){
-    $twoLeft.css({transform: 'rotateZ(16deg)'})
-  })
-  $oneLeft.on('mouseleave', function(){
-    $twoLeft.css({transform: 'rotateZ(0deg)'})
-  })
-  $oneRight.on('mouseenter', function(){
-    $twoRight.css({transform: 'rotateY(180deg) rotateZ(16deg)'})
-  })
-  $oneRight.on('mouseleave', function(){
-    $twoRight.css({transform: 'rotateY(180deg) rotateZ(0deg)'})
-  })
-  $twoLeft.on('mouseenter', function(){
-    $oneLeft.css({transform: 'rotate(180deg) rotateZ(16deg)'})
-  })
-  $twoLeft.on('mouseleave', function(){
-    $oneLeft.css({transform: 'rotate(180deg) rotateZ(0deg)'})
-  })
-
+  
 })
 
 $reload.on('click', function(){
   document.location.reload(true)
+})
+$twoRight.on('mouseenter', function(){
+  $oneRight.css({transform: ' rotateX(-180deg) rotateZ(16deg)'})
+})
+$twoRight.on('mouseleave', function(){
+  $oneRight.css({transform: 'rotateX(-180deg) rotateZ(0deg)'})
+})
+$oneLeft.on('mouseenter', function(){
+  $twoLeft.css({transform: 'rotateZ(16deg)'})
+})
+$oneLeft.on('mouseleave', function(){
+  $twoLeft.css({transform: 'rotateZ(0deg)'})
+})
+$oneRight.on('mouseenter', function(){
+  $twoRight.css({transform: 'rotateY(180deg) rotateZ(16deg)'})
+})
+$oneRight.on('mouseleave', function(){
+  $twoRight.css({transform: 'rotateY(180deg) rotateZ(0deg)'})
+})
+$twoLeft.on('mouseenter', function(){
+  $oneLeft.css({transform: 'rotate(180deg) rotateZ(16deg)'})
+})
+$twoLeft.on('mouseleave', function(){
+  $oneLeft.css({transform: 'rotate(180deg) rotateZ(0deg)'})
 })
 
 function countDown(){
