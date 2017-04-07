@@ -15,3 +15,12 @@ This is a game played by two people, in which the object is to eliminate the opp
 <li> You can only add up to 5
 (Ex. 4 can not increase upon 2)
 
+###User Stories: 
+Welcome Screen: Click on start button and it will randomize which user will go first
+
+Notification Panel: The Notification panel will animate in some way when the next user is up. The notification panel will update user on whose turn it is, how much time is left in the game, and who is winning. 
+
+Game Board: The item the user clicked on will animate in some way to show that they have completed their turn. The board will highlight in some way when it is the users turn. 
+
+Winner: When the 10 seconds are up, the winner will display and there will be a rematch button that picks which user starts the rematch
+
