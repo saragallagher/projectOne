@@ -47,13 +47,13 @@ body{
   color: rgba(255,255,255, 0);
   display: inline-block;
   margin: 2px;
-  background-size: 64%;
+  background-size: 50%;
   background-position:center;
   background-repeat: no-repeat;
 }
 
-button{
-  margin: 10px;
+.the-buttons{
+  text-align: center;
 }
 #turn{
   margin:10px;
