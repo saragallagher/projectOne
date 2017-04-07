@@ -18,13 +18,13 @@ var $winner = $('#winner')
 var players = [$bottomPlayer, $topPlayer]
 var $turn = $('#turn')
 
-var currentPlayer = players[0]
+var currentPlayer = players[Math.round(Math.random())]
 
 
 $finger.on('click', increase)
 $start.on('click', function(){
   theInterval = setInterval(countDown, 1000)
-  
+
 })
 
 $reload.on('click', function(){
